@@ -228,7 +228,7 @@ if __name__ == '__main__':
     pb = args.pushbullet
     pbval = pb
     # Try default push bullet file
-    if pbval.lower() == 'f' or pbval.lower() == 'false':
+    if pb is not None and (pbval.lower() == 'f' or pbval.lower() == 'false'):
         pbval = None
     elif pb is None and os.path.isfile('pushbullet.txt'):
         with open('pushbullet.txt') as f:
