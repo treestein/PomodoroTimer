@@ -34,12 +34,16 @@ def flash_terminal_on():
 
     if platform.startswith('linux'):
         subprocess.run(['printf', '\\e[?5h'])
+    elif platform.startswith('win32'):
+        subprocess.run(['COLOR', '70'], shell=True)
 
 def flash_terminal_off():
     '''Turns terminal to normal display mode if on linux'''
 
     if platform.startswith('linux'):
         subprocess.run(['printf', '\\e[?5l'])
+    elif platform.startswith('win32'):
+        subprocess.run(['COLOR', '07'], shell=True)
 
 def send_notifcation(message):
     '''Uses notify-send to display notification if on linux'''
