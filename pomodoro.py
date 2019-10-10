@@ -104,19 +104,22 @@ class PomodoroTimer:
         self.iterations = 0
 
         self.pb = None
-        if push_bullet:
-            self.pb = PushBullet(push_bullet)
+        self.set_pushbullet(push_bullet)
 
         self.print_welcome()
+
+    def set_pushbullet(self, pb_key):
+
+        if pb_key:
+            self.pb = PushBullet(pb_key)
+        else:
+            self.pb = None
 
     def print_welcome(self):
         '''Print welcome message and display some variables'''
 
         # Get a boolean var on whether Push Bullet has been initted
-        if self.pb is not None:
-            push_bullet = True
-        else:
-            push_bullet = False
+        push_bullet = self.pb is not None
 
         print(' Welcome to Pomodoro!\n----------------------')
         # Display variables
